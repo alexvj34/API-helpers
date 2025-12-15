@@ -19,6 +19,10 @@ branch: ${REFSPEC}
             checkout scm;
         }
 
+        stage('Build Docker Image') {
+            docker.build("localhost:5005/mock_tests:2.0.0")
+        }
+
         stage("MOCK tests in docker image") {
             sh "docker run --rm \
             --network=host \
